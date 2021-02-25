@@ -1,3 +1,14 @@
+<?php 
+    
+    session_start();
+
+    //require_once('../database.php');
+    require_once('component.php');
+
+    $database = getData("Books");
+    
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +19,8 @@
 <link rel="stylesheet" type="text/css" href="bootstrap.css">
 <link rel="stylesheet" type="text/css" href="chatbot.css">
 <link rel="stylesheet" type="text/css" href="responsive.css">
+<link rel="stylesheet" href="styles.css">
+
 
 <!-- ChatBot -->
 <link rel="stylesheet" type="text/css" href="jquery.convform.css">
@@ -16,45 +29,8 @@
 <script type="text/javascript" src="chatbot.js"></script>
 <?php require_once "homepageHeader.php" ?>
 </head>
+
 <body>
-<!-- ChatBot -->
-<div class="chat_icon">
-	<i class="fa fa-comments" aria-hidden="true"></i>
-</div>
-
-<div class="chat_box">
-	<div class="my-conv-form-wrapper">
-		<form action="" method="GET" class="hidden">
-        <input type="text" name="name" data-conv-question="Please, Enter your name">
-
-        <input type="text" data-conv-question="Hi {name}, <br> It's a pleasure to meet you." data-no-answer="true">
-
-      <select data-conv-question=" How can I help you" name="category">
-        <option value="WebNav">Website Navigation?</option>
-        <option value="bookSea">Book Search ?</option>
-      </select>
-
-      <div data-conv-fork="category">
-        <div data-conv-case="WebNav">
-        <input type="text" data-conv-question="You can access all the book categories from the navigation bar" data-no-answer="true">  
-        </div>
-        <div data-conv-case="bookSea" data-conv-fork="first-question2">
-          <input type="text" name="companyName" data-conv-question="What Book are you searching for?"> 
-          <input type="text" data-conv-question="Narrow your search and use the Search Bar." data-no-answer="true">
-        </div>
-      </div>
-
-      <select data-conv-question="Please Conform">
-        <option value="Yes">Conform</option>
-      </select>
-
-  	</form>
-	</div>
-</div>
-<!-- ChatBot end -->
-</body>
-</html>
-
 
 <div class="container">
     <h3 class="col-md-12 py-3 my-3" style="background: grey; color: white">Recommended books</h3>
@@ -63,5 +39,18 @@
 
 <div class="container">
     <h3 class="col-md-12 py-3 my-3" style="background: grey; color: white">All books</h3>
+    <div class="row text-center">
+      <?php
+        $result = $database;
+        while ($row = mysqli_fetch_assoc($result)){
+            component($row['Title'], $row['Author'], $row['Book_image'], $row['BookID']);
+        }
+      ?>
+    </div>
 </div>
+<?php require_once "chatbot.php" ?>
+
+</body>
+</html>
+
 <?php require_once "homepageFooter.php" ?>

@@ -14,11 +14,11 @@
 <div class="logo">
 BiblioTeca</div>
 <div class="nav-items">
-<li><a href="#">Home</a></li>
+<li><a href="#">HOME</a></li>
 <li><a href="#">Novels</a></li>
 <li><a href="#">Textbooks</a></li>
 <li><a href="#">Journals</a></li>
-<li><a href="#">Articles</a></li>
+<li><a href="#">Magazines</a></li>
 </div>
 <div class="search-icon">
 <span class="fas fa-search"></span></div>
