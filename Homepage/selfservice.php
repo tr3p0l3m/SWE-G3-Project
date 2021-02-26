@@ -25,7 +25,7 @@ body{
 }
 </style>
 <?php 
- require_once("Homepage/homepageHeader.php");
+ require_once("homepageHeader.php");
 ?>
 <br><br><br><br>
 <div class="container">
@@ -64,5 +64,5 @@ including Bulgarian, Hebrew, Polish and Japanese
 
 
 <?php 
- require_once("Homepage/homepageFooter.php");
+ require_once("homepageFooter.php");
 ?>
