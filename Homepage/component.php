@@ -44,7 +44,7 @@ function getData($tablename){
                                     <h6>
                                     <span class=\"price\">$bookauthor</span>
                                 </h6>
-                                <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"bookInfo('$bookid', this.id)\">More Info</button>
+                                <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"bookInfo('$bookid', this.id)\"><a href=\"selfservice.php?bid=$bookid\">More Info</a></button>
                                 <input type='hidden' name='BookID' value='$bookid'>
                             </div>
                         </div>
