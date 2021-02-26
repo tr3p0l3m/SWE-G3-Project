@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>All books</title>
-    <link href="sview.css" rel="stylesheet">
     <script src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js'></script><link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=BioRhyme:wght@800&display=swap" rel="stylesheet"> 
 
@@ -13,6 +12,22 @@
 		return confirm('Are you sure?');
 	}
 	</script>
+    <style>
+        .books{
+            padding: 20px;
+            border-radius: 10px;
+            color: black;
+        }
+        .normal{
+            color: white;
+            text-decoration: none;
+            background-color: #171c24;
+            height: 50px;
+            width: 150px;
+            border-radius: 10px;
+            
+        }
+    </style>
 
 
 </head>
@@ -24,17 +39,18 @@
     // }
     // else{    
     //     header("Location:loginPage.php");
-    require_once("Homepage/homepageHeader.php");
+    require_once("homepageHeader.php");
 
     ?>
-    <h1 style='text-align:center; color:white; font-family: BioRhyme, serif;'>CHOOSE RETURN DATE AND CONFIRM BOOKING:</h1>
+    <h1 style='text-align:center; color:#171c24; font-family: BioRhyme, serif;'>CHOOSE RETURN DATE AND CONFIRM BOOKING:</h1>
 
 
 
 <?php 
                         // include database and object files
-                        include_once "database.php";
-                        include_once "books.php";
+                        define('ROOT_PATH', dirname(__DIR__) . '/./');
+                        include(ROOT_PATH.'database.php');
+                        include(ROOT_PATH.'books.php');
                         // get database connection
                         $database = new Database();
                         $db = $database->getConnection();
@@ -94,7 +110,7 @@
                                 
                                 
 
-                                echo '<div class="books" style="width:20%; padding-bottom:20px;display:block; margin:0 auto; line-height:35px">';
+                                echo '<div class="books" style="width:30%; padding-bottom:20px;display:block; margin:0 auto; line-height:35px; background-color:white">';
                                 
                                     echo 'Title: ';    echo $title; 
                                     echo '<br>Category: ';    echo $category; 
@@ -102,10 +118,10 @@
                                     echo '<br>Book Status: ';    echo $book_status; ?>
                                     
                                     
-                                    <br> <div>Enter Return Date: </div>
-                                    <form action="confirmrenewal.php" method="POST"> 
+                                    <br> <div style="color:black">Enter Return Date: </div>
+                                    <form action="confirmborrow.php" method="POST"> 
                                     <input type="date" id="txtDate" name="expdate" style="" placeholder="Enter Date" required>
-                                    <?php echo '<br><br><button onclick="return checkDelete()" class="normal" type = "submit" name ="confirmborrow" style="width:150px; padding-bottom:35px"> Confirm Borrow </a></button>  
+                                    <?php echo '<br><br><button onclick="return checkDelete()" class="normal" type = "submit" name ="confirmborrow" style=""> Confirm Borrow </a></button>  
                                     </form>' ;
                                    
                                 
@@ -127,6 +143,6 @@
 
     
 </body>
-<?php   require_once("Homepage/homepageFooter.php");
+<?php   require_once("homepageFooter.php");
 ?>
 </html>
