@@ -1,4 +1,6 @@
 <?php 
+
+
 $dbserver= "localhost";
 $dbuser= "root";
 $dbpassword = "";
@@ -34,7 +36,7 @@ function getData($tablename){
                     <form action=\"homepage.php\" method=\"post\" onsubmit=\"return false;\">
                         <div class=\"card shadow\">
                             <div>
-                                <img src=\"images_Novel/$bookimg\" alt=\"Image1\" class=\"img-fluid card-img-top\">
+                                <img src=\"$bookimg\" alt=\"Image1\" class=\"img-fluid card-img-top\">
                             </div>
                             <div class=\"card-body\">
                                 <h5 class=\"card-title\">$booktitle</h5>
@@ -42,7 +44,7 @@ function getData($tablename){
                                     <h6>
                                     <span class=\"price\">$bookauthor</span>
                                 </h6>
-    
+                                <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"bookInfo('$bookid', this.id)\">More Info</button>
                                 <input type='hidden' name='BookID' value='$bookid'>
                             </div>
                         </div>
