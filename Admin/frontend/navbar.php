@@ -44,15 +44,15 @@
                 </div>
                 <?php
                 //checks if the variable user is set
-                if(isset($_SESSION['fname'])){    
-                  echo '<ul class="nav navbar-top-links navbar-right pull-right" style="height: 100px;">
-                  <li>
-                      <a class="profile-pic" href="#" style="height:100px; padding:25px 10px;"> <img src="../../User/images/person.png" alt="user-img"
-                              width="36" class="img-circle"><b class="hidden-xs">'.$_SESSION['fname'].',</b> </a>
-                  </li>
-                </ul>';
+                // if(isset($_SESSION['fname'])){    
+                //   echo '<ul class="nav navbar-top-links navbar-right pull-right" style="height: 100px;">
+                //   <li>
+                //       <a class="profile-pic" href="#" style="height:100px; padding:25px 10px;"> <img src="../../User/images/person.png" alt="user-img"
+                //               width="36" class="img-circle"><b class="hidden-xs">'.$_SESSION['fname'].',</b> </a>
+                //   </li>
+                // </ul>';
                 
-                }
+                // }
                 
                 ?>
                 
