@@ -3,7 +3,7 @@
 define('ROOT_PATH', dirname(__DIR__) . '/../');
 
 //Get database connection
-include(ROOT_PATH.'User/database.php');
+include(ROOT_PATH.'database.php');
 
  
 session_start();

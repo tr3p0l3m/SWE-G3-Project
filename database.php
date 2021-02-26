@@ -1,7 +1,7 @@
 <?php
 
 define("host","localhost");
-define("db_name","SEG3");
+define("db_name","st40212022");
 define("username", "root");
 define("password", getenv('MYSQLPASS') ? getenv('MYSQLPASS') : "");
 
