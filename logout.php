@@ -9,6 +9,6 @@ session_unset();
 //destroy the unique key and erase all data on the of the user so it cannot be traced
 session_destroy();
 
-header("Location:Admin/frontend/index.php");
+header("Location:Homepage/homepage.php");
 
 ?>
