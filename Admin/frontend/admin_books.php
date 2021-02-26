@@ -86,9 +86,11 @@ session_start();
                     <tr>
                         <th style="border-top-left-radius:10px">BookID</th>
                         <th>Title</th>
-                        <th>Author</th>
+                        <th>Book_image</th>
                         <th>Category</th>
-                        <th>Quantity</th>
+                        <th>Author</th>
+                        <th>book_summary</th>
+                        <th>Book_Status</th>
                         <th style="border-top-right-radius:10px"> </th>   
                         
                     </tr>
@@ -98,9 +100,11 @@ session_start();
                     echo "<tr>
                             <td>{$row["BookID"]}</td>
                             <td>{$row["Title"]}</td>
+                            <td>{$row["Book_image"]}</td>
                             <td>{$row["Category"]}</td>
                             <td>{$row["Author"]}</td>
-                            <td>{$row["Quantity"]}</td>
+                            <td>{$row["book_summary"]}</td>
+                            <td>{$row["Book_Status"]}</td>
                             <td><form method= 'post' action ='admin_books.php'>
                                 <button onclick='return checkDelete()' class='red' type='submit' value ='$row[BookID]' name='delete'> 
                                 Delete </button></form>

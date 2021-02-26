@@ -1,7 +1,7 @@
 <?php 
 class books{
     private $conn;
-    private $table_name = "Books";
+    private $table_name = "books";
 
     public $BookID;
     public $title;
@@ -18,7 +18,7 @@ class books{
         $query = "SELECT
                     *
                 FROM
-                Books";
+                books";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -27,14 +27,14 @@ class books{
     
     }
 
-    function OverdueBooks(){
+    function Overduebooks(){
         //Select all Query
         $query =  "SELECT 
                     *
                 FROM
-                    Borrowed_books
-                RIGHT JOIN Books ON Borrowed_books.BookID = Books.BookID 
-                WHERE CURDATE() > Borrowed_books.Expected_ReturnDate";
+                    borrowed_books
+                RIGHT JOIN books ON borrowed_books.BookID = books.BookID 
+                WHERE CURDATE() > borrowed_books.Expected_ReturnDate";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -48,8 +48,8 @@ class books{
                     *
                 FROM
                     messages
-                RIGHT JOIN Books ON messagess.BookID = Books.BookID 
-                WHERE CURDATE() > Borrowed_books.Expected_ReturnDate";
+                RIGHT JOIN books ON messages.BookID = books.BookID 
+                WHERE CURDATE() > borrowed_books.Expected_ReturnDate";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -63,7 +63,7 @@ class books{
         $query = "SELECT
                     *
                 FROM
-                    Borrowed_books 
+                    borrowed_books 
                 WHERE               
                 Expected_ReturnDate = CURDATE()";
         // prepare query statement
@@ -74,7 +74,7 @@ class books{
     }
     function BorrowedBooks(){
         //Select all Query
-        $query = "SELECT * FROM Borrowed_books";
+        $query = "SELECT * FROM borrowed_books";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -87,9 +87,9 @@ class books{
         $query =  "SELECT 
                     *
                 FROM
-                    Borrowed_books
-                RIGHT JOIN Books ON Borrowed_books.BookID = Books.BookID 
-                WHERE Borrowed_books.Expected_ReturnDate= CURDATE()";
+                    borrowed_books
+                RIGHT JOIN books ON borrowed_books.BookID = books.BookID 
+                WHERE borrowed_books.Expected_ReturnDate= CURDATE()";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -101,9 +101,9 @@ class books{
         $query =  "SELECT
                     *
                 FROM
-                    Borrowed_books
-                RIGHT JOIN Books ON Borrowed_books.BookID = Books.BookID 
-                WHERE Borrowed_books.Expected_ReturnDate= CURDATE()";
+                    borrowed_books
+                RIGHT JOIN books ON borrowed_books.BookID = books.BookID 
+                WHERE borrowed_books.Expected_ReturnDate= CURDATE()";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -113,13 +113,13 @@ class books{
 
 
     function getStudentBooks(){
-        $studentid = $_SESSION['studentID'];
-        $query =  "SELECT Borrowed_books.BookID, Borrowed_books.Expected_ReturnDate, Borrowed_books.Date_Borrowed, Books.Title,
-        Books.Category, Books.Author, Books.Quantity, Books.Book_Status
-        FROM Borrowed_books
-        RIGHT JOIN Books
-        ON Borrowed_books.BookID = Books.BookID
-        WHERE Borrowed_books.StudentID = '$studentid'";
+        $UserID = $_SESSION['UserID'];
+        $query =  "SELECT borrowed_books.BookID, borrowed_books.Expected_ReturnDate, borrowed_books.Date_Borrowed, books.Title,
+        books.Category, books.Author, books.Quantity, books.Book_Status
+        FROM borrowed_books
+        RIGHT JOIN books
+        ON borrowed_books.BookID = books.BookID
+        WHERE borrowed_books.UserID = '$UserID'";
          // prepare query statement
          $stmt = $this->conn->prepare($query);
          // execute query
@@ -128,11 +128,11 @@ class books{
 
     }
     function getDates(){
-        $studentid = $_SESSION['studentID'];
+        $UserID = $_SESSION['UserID'];
         $query = "SELECT
                 *
             FROM
-            Borrowed_books WHERE StudentID =".$studentid."";
+            borrowed_books WHERE UserID =".$UserID."";
         // prepare query statement
         $stmt = $this->conn->prepare($query);
         // execute query
@@ -142,7 +142,7 @@ class books{
 
     function InsertBook(){
         // query to insert record
-        $query = "INSERT INTO `Books`(`Title`, `Category`, `Author`, `Quantity`, `Book_status`) 
+        $query = "INSERT INTO `books`(`Title`, `Category`, `Author`, `Quantity`, `Book_status`) 
         VALUES ('$this->title','$this->category','$this->author','$this->quantity','$this->book_status')";
 
         // prepare query

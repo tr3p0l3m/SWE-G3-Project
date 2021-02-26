@@ -124,13 +124,13 @@ include('navbar.php');
                     // Fill the table body with the values
                     while($row = $stmt->fetch(PDO::FETCH_ASSOC)) {            
                         echo "<tr>
-                                <td>{$row["StudentID"]}</td>
+                                <td>{$row["UserID"]}</td>
                                 <td>{$row["Expected_ReturnDate"]}</td>
                                 <td>{$row["Date_Borrowed"]}</td>
                                 <td>{$row["Title"]}</td>
                                 <td>{$row["Author"]}</td>
                                 <td>{$row["Category"]}</td>
-                                <td><button class='normal' style='width:180px'><a href ='bookInfo.php?info=$row[BookID]&sid=$row[StudentID]' name='Del' style = 'color:white'> Click to get Student info </a></button></td>                                  
+                                <td><button class='normal' style='width:180px'><a href ='bookInfo.php?info=$row[BookID]&sid=$row[UserID]' name='Del' style = 'color:white'> Click to get User info </a></button></td>                                  
                             </tr>";
                         }
                     echo  "</table>";
