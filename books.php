@@ -7,7 +7,7 @@ class books{
     public $title;
     public $category;
     public $author;
-    public $quantity;
+    public $book_image;
     public $book_status;
 
     public function __construct($db){
@@ -156,6 +156,20 @@ class books{
             return false;
         }
     }
+
+    function displayBook($bookid){
+        $query = "SELECT
+                *
+            FROM
+            Books WHERE BookID =".$bookid."";
+        // prepare query statement
+        $stmt = $this->conn->prepare($query);
+        // execute query
+        $stmt->execute();
+        return $stmt;  
+    }
+
+
 
 }
 
