@@ -1,18 +1,18 @@
 <?php
 define('ROOT_PATH', dirname(__DIR__) . '/../');
-include(ROOT_PATH.'User/database.php');
-include_once(ROOT_PATH.'User/user.php');
+include(ROOT_PATH.'database.php');
+include_once(ROOT_PATH.'user.php');
 include('navbar.php');
 
 session_start();
 //checks if the variable user is set
-if(isset($_SESSION['fname'])){ 
-    if($_SESSION['role'] ==1){ 
-        header("Location:../../User/index.php");
-    }    
-}else{
-    header("location:../../User/LoginPage.php"); 
-}
+// if(isset($_SESSION['fname'])){ 
+//     if($_SESSION['role'] ==1){ 
+//         header("Location:Admin/frontend/index.php");
+//     }    
+// }else{
+//     header("location:signin.php"); 
+// }
 ?>
 <link href="css/admin.css" id="theme" rel="stylesheet">
 <link rel="preconnect" href="https://fonts.gstatic.com">

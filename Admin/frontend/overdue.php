@@ -5,11 +5,11 @@ include('navbar.php');
     //checks if the variable user is set
     if(isset($_SESSION['fname'])){
         if($_SESSION['role'] == 1){ 
-            header("Location:../../User/index.php");    
+            header("Location:Admin/frontend/index.php");    
         }
     }
     else{
-        header("location:../../User/loginPage.php"); 
+        header("location:signin.php"); 
     }
 
 
@@ -72,9 +72,9 @@ include('navbar.php');
                 </div>
                 <?php
                     define('ROOT_PATH', dirname(__DIR__) . '/../');
-                    include_once(ROOT_PATH.'User/database.php');
-                    include_once(ROOT_PATH.'User/user.php');
-                    include_once(ROOT_PATH.'User/books.php');
+                    include_once(ROOT_PATH.'database.php');
+                    include_once(ROOT_PATH.'user.php');
+                    include_once(ROOT_PATH.'books.php');
                     
 
                     // get database connection

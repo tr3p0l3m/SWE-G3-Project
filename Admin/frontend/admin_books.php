@@ -2,10 +2,10 @@
 define('ROOT_PATH', dirname(__DIR__) . '/../');
 
 //Get database connection
-include(ROOT_PATH.'User/database.php');
+include(ROOT_PATH.'database.php');
 
 // instantiate user object
-include(ROOT_PATH.'User/books.php');
+include(ROOT_PATH.'books.php');
 
 include('navbar.php');
 
@@ -13,7 +13,7 @@ session_start();
 //checks if the variable user is set
 if(isset($_SESSION['fname'])){ 
     if($_SESSION['role'] ==1){ 
-        header("Location:../../User/index.php");
+        header("Location:Admin/frontend/index.php");
     }    
 }else{
     header("location:../../User/LoginPage.php"); 
