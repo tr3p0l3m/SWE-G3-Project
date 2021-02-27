@@ -31,7 +31,6 @@ include(ROOT_PATH.'books.php');
  require_once("homepageHeader.php");
 
  session_start();
- $_SESSION['UserID'] = 1;
  $userid = $_SESSION['UserID'];
 
 
@@ -74,12 +73,13 @@ include(ROOT_PATH.'books.php');
         <div class="col-md-6" style="color:grey">
         <h1>'; echo $title; echo'</h1>
         <p style="color:grey">'; echo $author; echo'</p>
-        <p style="color:grey">'; echo $book_summary;  echo'
+        <p style="color:grey">'; echo $book_summary; echo $_SESSION['UserID']; echo'
         
         </p>
         <br>
 
         <br>';
+        if(isset($_SESSION['fname'])){
         if($book_status=="on-shelf"){
           echo' <button class="button"><a href="borrow_book.php?bid='; echo $bookid; echo'">Borrow</a></button> ';
       } else {
@@ -96,6 +96,7 @@ include(ROOT_PATH.'books.php');
         echo'<div class="button" style="background-color: red">Cannot renew</div> ';
 
       }
+    }
         
         
 

@@ -1,5 +1,4 @@
 <?php
-
 //Retrieve the existing unique session key
 session_start();
 
@@ -9,6 +8,6 @@ session_unset();
 //destroy the unique key and erase all data on the of the user so it cannot be traced
 session_destroy();
 
-header("Location:Homepage/homepage.php");
+header("Location: landingpage.php");
 
 ?>

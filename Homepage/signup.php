@@ -1,10 +1,10 @@
 <?php
  
 // get database connection
-include_once("database.php");
- 
-// instantiate user object
-include_once("user.php");
+define('ROOT_PATH', dirname(__DIR__) . '/./');
+
+include_once(ROOT_PATH. "database.php");
+include_once(ROOT_PATH."user.php");
  
 session_start();
 $database = new Database();
@@ -32,15 +32,15 @@ if($user->signup()){
 else{
     if($user->errPass){
         $_SESSION["error"] = $errorPassword;
-        header("location: signupPage.php");
+        header("location: signuppage.php");
     }
     if($user->errUser){
         $_SESSION["error"] = $errorUsername;
-        header("location: signupPage.php");
+        header("location: signuppage.php");
     }
     if($user->errEmail){
         $_SESSION["error"] = $errorEmail;
-        header("location: signupPage.php");
+        header("location: signuppage.php");
     }
     $_SESSION["m_fname"] = $user->fname;
     $_SESSION["m_lname"] = $user->lname;

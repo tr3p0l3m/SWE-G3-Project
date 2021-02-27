@@ -10,7 +10,7 @@ if(isset($_SESSION['fname'])){
 } 
 
 else{    
-    header("Location:loginPage.php");
+    header("Location:loginpage.php");
 }  
 
 // get database connection

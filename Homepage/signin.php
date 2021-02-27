@@ -1,8 +1,10 @@
 
 <?php
 // include database and object files
-include_once "database.php";
-include_once "user.php";
+define('ROOT_PATH', dirname(__DIR__) . '/./');
+
+include_once(ROOT_PATH. "database.php");
+include_once(ROOT_PATH."user.php");
 
 
 // get database connection
@@ -31,7 +33,7 @@ if($stmt->rowCount() > 0){
 
     
     if($row['role'] == 1){
-        header("Location:mybooks.php");
+        header("Location: mybooks.php");
     }
     if($row['role'] == 0){
         header('Location: ..\Admin\frontend\index.php');
@@ -42,7 +44,7 @@ else{
     session_start();
     $_SESSION['m_email']= $user->login;
     $_SESSION["error"] = $errorlogin;
-    header("location: loginPage.php");
+    header("location: loginpage.php");
 }
 
 ?>
