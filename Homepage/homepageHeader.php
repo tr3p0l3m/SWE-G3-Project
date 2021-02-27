@@ -11,14 +11,26 @@
     <nav>
       <div class="menu-icon">
 <span class="fas fa-bars"></span></div>
-<div class="logo">
+<div class="logo" style="margin-left:-10px">
 BiblioTeca</div>
 <div class="nav-items">
-<li><a href="#">HOME</a></li>
+<li><a href="homepage.php">HOME</a></li>
+<li><a href="mybooks.php">My Books</a></li>
 <li><a href="#">Novels</a></li>
 <li><a href="#">Textbooks</a></li>
 <li><a href="#">Journals</a></li>
 <li><a href="#">Magazines</a></li>
+<?php
+session_start();
+if(isset($_SESSION['fname'])){
+  echo '
+  <li><a href="logout.php">Log out</a></li>';
+}else{
+  echo '
+  <li><a href="loginpage.php">Log in</a></li>';
+}
+
+?>
 </div>
 <div class="search-icon">
 <span class="fas fa-search"></span></div>

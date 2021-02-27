@@ -25,41 +25,99 @@ body{
 }
 </style>
 <?php 
+define('ROOT_PATH', dirname(__DIR__) . '/./');
+include(ROOT_PATH.'database.php');
+include(ROOT_PATH.'books.php');
  require_once("homepageHeader.php");
+
+ session_start();
+ $userid = $_SESSION['UserID'];
+
+
+
+ $database = new Database();
+ $db = $database->getConnection();
+ $conn = $db;
+
+ $bookid = $_GET['bid'];
+ if(isset($_GET['bid'])){
+    $book = new books($db);
+    $title;
+    $category;
+    $author;
+    $book_image;
+    $book_status;
+    $stmt = $book->displayBook($bookid);
+
+
+
+    if($stmt->rowCount() > 0){
+      while($result = $stmt->fetch(PDO::FETCH_ASSOC)) {
+        $title = $result['Title'];
+        $category= $result['Category'];
+        $author= $result["Author"];
+        $book_image= $result["Book_image"];
+        $book_status= $result["Book_Status"];
+        $book_summary= $result["book_summary"];
+
+        echo'
+        <br><br><br><br>
+        <div class="container">
+        <div class="row">
+
+        <div class="col-md-4">
+        <img src = "';echo $book_image; echo'" alt="book-image"/>
+
+        </div>
+
+        <div class="col-md-6" style="color:grey">
+        <h1>'; echo $title; echo'</h1>
+        <p style="color:grey">'; echo $author; echo'</p>
+        <p style="color:grey">'; echo $book_summary; echo $_SESSION['UserID']; echo'
+        
+        </p>
+        <br>
+
+        <br>';
+        if(isset($_SESSION['fname'])){
+        if($book_status=="on-shelf"){
+          echo' <button class="button"><a href="borrow_book.php?bid='; echo $bookid; echo'">Borrow</a></button> ';
+      } else {
+        echo'<div class="button" style="background-color: red">Book borrowed</div> ';
+      }
+       //use session id and bookid to check borrowed table before echoing
+      $checkquery="SELECT * FROM `Borrowed_books` WHERE UserID = '$userid' AND BookID = '$bookid'";
+      $stmt0 = $conn->prepare($checkquery);
+      $stmt0->execute();
+      $check=$stmt0->rowCount();
+      if($check ==1){
+        echo'<button class="button"><a href="renew_book.php?bid='; echo $bookid; echo'">Renew</a></button>'; 
+      } else{
+        echo'<div class="button" style="background-color: red">Cannot renew</div> ';
+
+      }
+    }
+        
+        
+
+        echo'
+        </div>
+
+        <div class="col-md-2">
+        </div>
+
+        </div>
+        </div>
+        ';
+
+
+      }
+    }
+ }
+
+
 ?>
-<br><br><br><br>
-<div class="container">
-<div class="row">
 
-<div class="col-md-4">
-<img src = "images_Novel/nancy-drew.jpg" alt="book-image"/>
-
-</div>
-
-<div class="col-md-6" style="color:grey">
-<h1>City of Bones</h1>
-<p style="color:grey">Emelia Clare</p>
-<p style="color:grey">
-City of Bones is the first urban fantasy book in author 
-Cassandra Clare's New York Times bestselling series 
-The Mortal Instruments. The novel is set in modern-day 
-New York City and has been released in several languages, 
-including Bulgarian, Hebrew, Polish and Japanese
-</p>
-<br>
-
-<br>
-
-
-<button class="button">Borrow</button>
-<button class="button">Renew</button>
-</div>
-
-<div class="col-md-2">
-</div>
-
-</div>
-</div>
 
 
 

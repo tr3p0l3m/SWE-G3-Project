@@ -1,3 +1,8 @@
+<script language="JavaScript" type="text/javascript">
+	function checkDelete(){
+		return confirm('Are you sure?');
+	}
+	</script>
 <?php 
 
 
@@ -45,6 +50,37 @@ function getData($tablename){
                                     <span class=\"price\">$bookauthor</span>
                                 </h6>
                                 <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"bookInfo('$bookid', this.id)\"><a href=\"selfservice.php?bid=$bookid\">More Info</a></button>
+                                <input type='hidden' name='BookID' value='$bookid'>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+        "; 
+        //printing the here doc
+        echo $element;
+    }
+
+    function mybook($booktitle, $bookauthor, $bookimg, $bookid, $deadline){
+        // using a here doc to save html string in a variable and print it out later
+        $element = "
+        
+        <div class=\"col-md-3 col-sm-6 my-3 my-md-10\" >
+                    <form action=\"homepage.php\" method=\"post\" onsubmit=\"return false;\">
+                        <div class=\"card shadow\" style='margin-bottom:10px'>
+                            <div>
+                                <img src=\"$bookimg\" alt=\"Image1\" class=\"img-fluid card-img-top\">
+                            </div>
+                            <div class=\"card-body\">
+                                <h5 class=\"card-title\">$booktitle</h5>
+                                
+                                    <h6>
+                                    <span class=\"price\">$bookauthor</span>
+                                </h6>
+                                <h6>
+                                    <span class=\"price\">Deadline:<br> $deadline</span>
+                                </h6>
+                                <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"bookInfo('$bookid', this.id)\"><a href=\"renew_book.php?bid=$bookid\">Renew</a></button>
+                                <button id=\"btn$bookid\" type=\"submit\" class=\"btn btn-warning my-3\" name=\"add\" onclick=\"return checkDelete()\"><a href=\"mybooks.php?bid=$bookid\">Return</a></button>
                                 <input type='hidden' name='BookID' value='$bookid'>
                             </div>
                         </div>
