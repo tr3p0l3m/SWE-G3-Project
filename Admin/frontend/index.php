@@ -42,7 +42,7 @@ include('navbar.php');
         display:block;
         margin: 0 auto;
         margin-top:50px; 
-        background-color: #c0392b;
+        background-color: black;
         font-size:20px;
         text-align: center;
         border-radius:10px;
