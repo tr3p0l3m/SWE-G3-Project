@@ -42,7 +42,7 @@
     require_once("homepageHeader.php");
 
     ?>
-    <h1 style='text-align:center; color:#171c24; font-family: BioRhyme, serif;'>CHOOSE RETURN DATE AND CONFIRM BOOKING:</h1>
+    <h1 style='text-align:center; color:#171c24; font-family: BioRhyme, serif;'>CHOOSE RETURN DATE AND CONFIRM RENEWAL:</h1>
 
 
 
@@ -121,7 +121,7 @@
                                     <br> <div style="color:black">Enter Return Date: </div>
                                     <form action="confirmrenewal.php" method="POST"> 
                                     <input type="date" id="txtDate" name="expdate" style="" placeholder="Enter Date" required>
-                                    <?php echo '<br><br><button onclick="return checkDelete()" class="normal" type = "submit" name ="confirmborrow" style=""> Confirm Borrow </a></button>  
+                                    <?php echo '<br><br><button onclick="return checkDelete()" class="normal" type = "submit" name ="confirmborrow" style=""> Confirm Renewal </a></button>  
                                     </form>' ;
                                    
                                 

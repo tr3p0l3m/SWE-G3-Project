@@ -30,6 +30,11 @@ include(ROOT_PATH.'database.php');
 include(ROOT_PATH.'books.php');
  require_once("homepageHeader.php");
 
+ session_start();
+ $_SESSION['UserID'] = 1;
+ $userid = $_SESSION['UserID'];
+
+
 
  $database = new Database();
  $db = $database->getConnection();
@@ -80,8 +85,21 @@ include(ROOT_PATH.'books.php');
       } else {
         echo'<div class="button" style="background-color: red">Book borrowed</div> ';
       }
-         //use session id and bookid to check borrowed table before echoing
-        echo'<button class="button"><a href="renew_book.php?bid='; echo $bookid; echo'">Renew</a></button>
+       //use session id and bookid to check borrowed table before echoing
+      $checkquery="SELECT * FROM `Borrowed_books` WHERE UserID = '$userid' AND BookID = '$bookid'";
+      $stmt0 = $conn->prepare($checkquery);
+      $stmt0->execute();
+      $check=$stmt0->rowCount();
+      if($check ==1){
+        echo'<button class="button"><a href="renew_book.php?bid='; echo $bookid; echo'">Renew</a></button>'; 
+      } else{
+        echo'<div class="button" style="background-color: red">Cannot renew</div> ';
+
+      }
+        
+        
+
+        echo'
         </div>
 
         <div class="col-md-2">

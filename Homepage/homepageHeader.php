@@ -15,6 +15,7 @@
 BiblioTeca</div>
 <div class="nav-items">
 <li><a href="homepage.php">HOME</a></li>
+<li><a href="mybooks.php">My Books</a></li>
 <li><a href="#">Novels</a></li>
 <li><a href="#">Textbooks</a></li>
 <li><a href="#">Journals</a></li>

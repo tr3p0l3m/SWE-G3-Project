@@ -1,8 +1,8 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <?php
-include_once "database.php";
-include_once "books.php";
-
+define('ROOT_PATH', dirname(__DIR__) . '/./');
+include(ROOT_PATH.'database.php');
+include(ROOT_PATH.'books.php');
 session_start();
 //checks if the variable user is set
 if(isset($_SESSION['fname'])){    
@@ -23,18 +23,19 @@ $book = new books($db);
 $conn = $db;
 
 $date = date("Y-m-d", strtotime($_POST['expdate']));
-$studentid = $_SESSION['studentID'];
+$userid = $_SESSION['UserID'];
 $bookid = $_SESSION['bookid'];
+// $bid = $_POST['BookID'];
 $curdate = date("Y-m-d");
 
 if(isset($date)){
 
-    $checkquery="SELECT * FROM `Borrowed_books` WHERE StudentID = '$studentid' AND BookID = '$bookid'";
+    $checkquery="SELECT * FROM `Borrowed_books` WHERE UserID = '$userid' AND BookID = '$bookid'";
     $stmt0 = $conn->prepare($checkquery);
     $stmt0->execute();
     $check=$stmt0->rowCount();
     if($check==1){
-        $query = "UPDATE `Borrowed_books` SET Expected_ReturnDate = '$date' WHERE BookID = '$bookid' AND StudentID = '$studentid'";
+        $query = "UPDATE `Borrowed_books` SET Expected_ReturnDate = '$date' WHERE BookID = '$bookid' AND UserID = '$userid'";
     
         // prepare query statement
         $stmt = $conn->prepare($query);
@@ -53,7 +54,7 @@ if(isset($date)){
     }else{
         echo '<script>';
         echo 'swal("Sorry!", "Seems like you have not borrowed this boook.", "error").then(function() {
-            window.location = "student_view.php";
+            window.location = "mybooks.php";
         });
         ;
         </script>';

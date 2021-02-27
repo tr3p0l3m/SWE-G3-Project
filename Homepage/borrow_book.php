@@ -121,6 +121,7 @@
                                     <br> <div style="color:black">Enter Return Date: </div>
                                     <form action="confirmborrow.php" method="POST"> 
                                     <input type="date" id="txtDate" name="expdate" style="" placeholder="Enter Date" required>
+                                    <input type="hidden" name="BookID" value=<?php echo $bookid;?>>
                                     <?php echo '<br><br><button onclick="return checkDelete()" class="normal" type = "submit" name ="confirmborrow" style=""> Confirm Borrow </a></button>  
                                     </form>' ;
                                    

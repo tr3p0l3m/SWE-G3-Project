@@ -114,12 +114,12 @@ class books{
 
     function getStudentBooks(){
         $UserID = $_SESSION['UserID'];
-        $query =  "SELECT borrowed_books.BookID, borrowed_books.Expected_ReturnDate, borrowed_books.Date_Borrowed, books.Title,
-        books.Category, books.Author, books.Quantity, books.Book_Status
-        FROM borrowed_books
-        RIGHT JOIN books
-        ON borrowed_books.BookID = books.BookID
-        WHERE borrowed_books.UserID = '$UserID'";
+        $query =  "SELECT Borrowed_books.BookID, Borrowed_books.Expected_ReturnDate, Borrowed_books.Date_Borrowed, Books.Title,
+        Books.Category, Books.Author, Books.Book_Status, Books.Book_image
+        FROM Borrowed_books
+        RIGHT JOIN Books
+        ON Borrowed_books.BookID = Books.BookID
+        WHERE Borrowed_books.UserID = '$UserID'";
          // prepare query statement
          $stmt = $this->conn->prepare($query);
          // execute query
