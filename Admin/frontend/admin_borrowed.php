@@ -12,11 +12,11 @@ include('navbar.php');
 session_start();
 //checks if the variable user is set
 if(isset($_SESSION['fname'])){ 
-    if($_SESSION['role'] ==1){ 
-        header("Location:../../User/index.php");
+    if($_SESSION['role'] ==0){ 
+        header("Location:Admin/frontend/index.php");
     }    
 }else{
-    header("location:../../User/LoginPage.php"); 
+    header("location:../../Homepage/loginpage.php"); 
 }
 
 ?>

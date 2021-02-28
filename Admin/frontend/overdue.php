@@ -3,22 +3,22 @@ session_start();
 include('navbar.php');
 
     //checks if the variable user is set
-    // if(isset($_SESSION['fname'])){
-    //     if($_SESSION['role'] == 1){ 
-    //         header("Location:Admin/frontend/index.php");    
-    //     }
-    // }
-    // else{
-    //     header("location:signin.php"); 
-    // }
+    if(isset($_SESSION['fname'])){
+        if($_SESSION['role'] == 0){ 
+            header("Location:Admin/frontend/index.php");    
+        }
+    }
+    else{
+        header("location:../../Homepage/loginpage.php"); 
+    }
 
 
-    // if(isset($_SESSION['Message'])){
-    //     echo "<script type='text/javascript'>
-    //         alert('" . $_SESSION['errorMessage'] . "');
-    //       </script>";
-    //     unset($_SESSION['Message']);
-    // }
+    if(isset($_SESSION['Message'])){
+        echo "<script type='text/javascript'>
+            alert('" . $_SESSION['errorMessage'] . "');
+          </script>";
+        unset($_SESSION['Message']);
+    }
     
     ?>
  <link href="css/admin.css" id="theme" rel="stylesheet">

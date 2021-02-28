@@ -11,13 +11,13 @@ include('navbar.php');
 
 session_start();
 //checks if the variable user is set
-// if(isset($_SESSION['fname'])){ 
-//     if($_SESSION['role'] ==1){ 
-//         header("Location:Admin/frontend/index.php");
-//     }    
-// }else{
-//     header("location:../../User/LoginPage.php"); 
-// }
+if(isset($_SESSION['fname'])){ 
+    if($_SESSION['role'] ==0){ 
+        header("Location:Admin/frontend/index.php");
+    }    
+}else{
+    header("location:../../Homepage/loginpage.php"); 
+}
 
 ?>
 <link href="css/admin.css" id="theme" rel="stylesheet">

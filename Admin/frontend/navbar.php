@@ -35,30 +35,23 @@
                     href="javascript:void(0)" data-toggle="collapse" data-target=".navbar-collapse"><i
                         class="fa fa-bars"></i></a>
                 <div class="top-left-part">
-<<<<<<< HEAD
                 <!-- <a class="navbar-brand justify-content-center" href="../../mybooks.php" style="height: 100px; background-color:black">
-                        <!-- <b class="logo-icon">
+                         <b class="logo-icon">
                             <img src="Admin/frontend/img/logo.png" class="dark-logo"/>
-=======
-                <a class="navbar-brand justify-content-center" href="../../index.php" style="height: 100px;">
-                        <b class="logo-icon">
-                            <img src="../../User/images/bookbak.png" class="dark-logo" style ="height:100px; padding:0 0 10px 50px"/>
->>>>>>> d0d5c84f049540392334d802c9272158a817b7ec
 
                         </b> -->
                     <!-- </a> -->
                 </div>
                 <?php
                 //checks if the variable user is set
-                // if(isset($_SESSION['fname'])){    
-                //   echo '<ul class="nav navbar-top-links navbar-right pull-right" style="height: 100px;">
-                //   <li>
-                //       <a class="profile-pic" href="#" style="height:100px; padding:25px 10px;"> <img src="../../User/images/person.png" alt="user-img"
-                //               width="36" class="img-circle"><b class="hidden-xs">'.$_SESSION['fname'].',</b> </a>
-                //   </li>
-                // </ul>';
+                if(isset($_SESSION['fname'])){    
+                  echo '<ul class="nav navbar-top-links navbar-right pull-right" style="height: 100px;">
+                  <li>
+                      <a class="profile-pic" href="#" style="height:100px; padding:25px 10px;"><b class="hidden-xs">'.$_SESSION['fname'].',</b> </a>
+                  </li>
+                </ul>';
                 
-                // }
+                }
                 
                 ?>
                 
